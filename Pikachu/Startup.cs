@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pikachu.Models;
 
 namespace Pikachu
 {
@@ -21,7 +23,9 @@ namespace Pikachu
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<PikachuContext>(options => options.UseSqlServer(connection));
+            services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/public"; });
         }
 
@@ -42,7 +46,7 @@ namespace Pikachu
             
             app.UseEndpoints(ep =>
             {
-                ep.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+                ep.MapDefaultControllerRoute();
             });
             
             app.UseStaticFiles();

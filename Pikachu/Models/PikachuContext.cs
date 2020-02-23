@@ -2,12 +2,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Pikachu.Models
 {
-    public class BaseContext : DbContext
+    public class PikachuContext : DbContext
     {
-        public DbSet<Post> Posts;
-        public DbSet<User> Users;
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        public BaseContext(DbContextOptions<BaseContext> options) : base(options)
+        public PikachuContext(DbContextOptions<PikachuContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
