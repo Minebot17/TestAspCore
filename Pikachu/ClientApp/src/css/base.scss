@@ -1,0 +1,38 @@
+//@import "bootstrap/dist/css/bootstrap.min.css";
+
+body {
+    background: #23272a;
+}
+
+.grid {
+    margin-top: 85px;
+    display: grid;
+    width: 100%;
+    grid-auto-flow: column;
+    grid-template-columns: 60% 40%;
+}
+
+.grid-left {
+    width: 70%;
+    height: 100px;
+    justify-self: end;
+}
+
+.grid-right {
+    background-color: #00ff00;
+    width: 40%;
+    height: 100px;
+}
+
+.white-label {
+    color: white;
+}
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+  width: 100%;
+}

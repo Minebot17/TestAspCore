@@ -1,0 +1,10 @@
+@import "PostItem.scss";
+
+.userPanel {
+    @extend .postItemWrapper;
+}
+
+.userPanel > p {
+    word-wrap: break-word;
+    width: 100%;
+}

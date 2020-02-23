@@ -1,0 +1,33 @@
+.postsWrapper {
+    width: 100%;
+    opacity: 1;
+}
+
+.postsPagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.postsPagination > li > a {
+    color: white;
+    background-color: #343A40;
+    border-color: #343A40;
+}
+
+.postsPagination > li > a:focus,
+.postsPagination > li > a:hover,
+.postsPagination > li > span:focus,
+.postsPagination > li > span:hover {
+    color: white;
+    background-color: #4F5860;
+    border-color: #4F5860;
+}
+
+.page-item.active .page-link {
+    z-index: 2;
+    color: white;
+    background-color: #7289DA;
+    border-color: #7289DA;
+}
