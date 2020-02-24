@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,7 @@ namespace Pikachu
             services.AddDbContext<PikachuContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/public"; });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,6 +45,8 @@ namespace Pikachu
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             
             app.UseEndpoints(ep =>
             {

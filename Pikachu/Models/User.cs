@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Pikachu.Models
 {
     public class User

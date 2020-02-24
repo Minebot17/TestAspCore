@@ -39,8 +39,8 @@ window.onunload = function(){
 }
 
 if (getCookie("id")){
-    userInfoStore.setSessionId(getCookie("id"));
-    userInfoStore.updateUserInfo();
+    //userInfoStore.setSessionId(getCookie("id"));
+    //userInfoStore.updateUserInfo();
 }
 
 function setTimeLine(key,a){
