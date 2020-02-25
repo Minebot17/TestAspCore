@@ -30,7 +30,10 @@ namespace Pikachu.Controllers
         public async void login()
         {
             if (!Request.Body.CanRead)
+            {
+                Response.StatusCode = 400;
                 return;
+            }
             
             JObject body = await Utils.ParseRequest(Request);
             string userName = body.Property("login").Value.ToString();
@@ -51,7 +54,10 @@ namespace Pikachu.Controllers
         public async void register()
         {
             if (!Request.Body.CanRead)
+            {
+                Response.StatusCode = 400;
                 return;
+            }
             
             JObject body = await Utils.ParseRequest(Request);
             string userName = body.Property("login").Value.ToString();

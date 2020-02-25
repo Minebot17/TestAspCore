@@ -37,8 +37,8 @@ namespace Pikachu.Controllers
         private IActionResult GetPostsSortedBy(PostSortAttribute attribute)
         {
             IOrderedQueryable<Post> ordered =
-            attribute == PostSortAttribute.Date ? db.Posts.OrderBy(p => p.PublishDate) :
-            attribute == PostSortAttribute.Rating ? db.Posts.OrderBy(p => p.Rating) :
+            attribute == PostSortAttribute.Date ? db.Posts.OrderByDescending(p => p.PublishDate) :
+            attribute == PostSortAttribute.Rating ? db.Posts.OrderByDescending(p => p.Rating) :
             attribute == PostSortAttribute.Hot ? db.Posts.OrderBy(p => p.PublishDate) :
             db.Posts.OrderBy(p => p.PublishDate);
 
