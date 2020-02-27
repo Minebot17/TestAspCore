@@ -21,7 +21,8 @@ namespace Pikachu.Controllers
         }
 
         [HttpPost]
-        public async void add()
+        [ActionName("add")]
+        public async void AddPostAction()
         {
             if (!Request.Body.CanRead)
             {

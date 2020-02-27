@@ -19,7 +19,8 @@ namespace Pikachu.Controllers
         }
 
         [HttpGet]
-        public void lk()
+        [ActionName("lk")]
+        public void UserInfoAction()
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -29,6 +30,7 @@ namespace Pikachu.Controllers
                     JObject userInfo = new JObject(
                         new JProperty("login", user.Name),
                         new JProperty("email", user.Email),
+                        new JProperty("password", user.Password),
                         new JProperty("rating", 0)
                     );
                     Response.WriteAsync(userInfo.ToString());
@@ -41,15 +43,16 @@ namespace Pikachu.Controllers
         }
 
         [HttpGet]
-        public async void logout()
+        [ActionName("logout")]
+        public async void UserLogoutAction()
         {
             if (User.Identity.IsAuthenticated)
             {
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                Response.StatusCode = 200;
+                Response.StatusCode = 200; // ok
             }
             else
-                Response.StatusCode = 206;
+                Response.StatusCode = 206; // user not authorized
         }
     }
 }

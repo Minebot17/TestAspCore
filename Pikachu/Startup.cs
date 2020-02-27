@@ -47,7 +47,6 @@ namespace Pikachu
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            
             app.UseEndpoints(ep =>
             {
                 ep.MapDefaultControllerRoute();
@@ -55,17 +54,7 @@ namespace Pikachu
             
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-            
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    //spa.UseReactDevelopmentServer(npmScript: "run dev");
-                }
-            }
-            );
+            app.UseSpa(spa => spa.Options.SourcePath = "ClientApp");
         }
     }
 }

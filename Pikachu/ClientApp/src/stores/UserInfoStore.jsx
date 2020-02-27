@@ -2,29 +2,24 @@ import { observable, action } from 'mobx';
 import { setCookie, getCookie } from "../cookies.jsx";
 
 class UserInfoStore {
-    //@observable sessionId;
     @observable login;
     @observable email;
+    @observable password;
     @observable rating;
-
-    //@action
-    //setSessionId(sessionId){
-    //    this.sessionId = sessionId;
-    //    setCookie("id", sessionId);
-    //}
 
     @action
     setUserData(user){
         this.login = user.login;
         this.email = user.email;
+        this.password = user.password;
         this.rating = user.rating;
     }
 
     @action
     logout(){
-        //this.sessionId = undefined;
         this.login = undefined;
         this.email = undefined;
+        this.password = undefined;
         this.rating = undefined;
     }
 

@@ -17,7 +17,6 @@ namespace Pikachu.Controllers
 
         public IActionResult Index()
         {
-            Console.WriteLine("asd");
             return View();
         }
     }

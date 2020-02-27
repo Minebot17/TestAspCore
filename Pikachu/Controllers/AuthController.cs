@@ -27,7 +27,8 @@ namespace Pikachu.Controllers
         }
 
         [HttpPost]
-        public async void login()
+        [ActionName("login")]
+        public async void LoginAction()
         {
             if (!Request.Body.CanRead)
             {
@@ -44,14 +45,15 @@ namespace Pikachu.Controllers
             if (user != null)
             {
                 await Authenticate(userName);
-                Response.StatusCode = 200;
+                Response.StatusCode = 200; // ok
             }
             else
-                Response.StatusCode = 202;
+                Response.StatusCode = 202; // User name not found
         }
 
         [HttpPost]
-        public async void register()
+        [ActionName("register")]
+        public async void RegisterAction()
         {
             if (!Request.Body.CanRead)
             {
@@ -77,10 +79,10 @@ namespace Pikachu.Controllers
                 });
                 db.SaveChanges();
                 await Authenticate(userName);
-                Response.StatusCode = 200;
+                Response.StatusCode = 200; // ok
             }
             else
-                Response.StatusCode = 203;
+                Response.StatusCode = 203; // User already exists
         }
 
         private async Task Authenticate(string userName)
